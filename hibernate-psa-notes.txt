@@ -660,6 +660,31 @@ class DemocrudApplicationTests {
 	}
 }
 
+============================================================================
+save Multiple record at the same time
+===============================================================
+@Test
+	void saveAllEmployee() {
+		Employee e=new Employee();
+		e.setId(3);
+		e.setName("tanish");
+		e.setEmailId("tanish@123");
+		e.setMobile("9898123499");
+		repo.save(e);
+		
+		
+		Employee e1=new Employee();
+		e1.setId(4);
+		e1.setName("vanish");
+		e1.setEmailId("vanish@123");
+		e1.setMobile("9898123422");
+		//repo.save(e);   // save one data at one time
+		
+		repo.saveAll(List.of(e,e1));// save all the data at the same time
+		
+		
+	}
+
 What are finder methods in hibernate?
 --------------------------------------
 Finder methods in Hibernate (or JPA) are custom methods used to find or fetch records from the database, based on certain conditions.
@@ -1854,4 +1879,5 @@ Shared Caching Works Like This:
 -> First DB hit → stores in second-level cache.
 -> If User B logs in and loads user with ID 1:
 -> No DB hit — served from cache!
+
 
