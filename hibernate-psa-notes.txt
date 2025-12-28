@@ -897,6 +897,7 @@ public interface EmployeeRepository extends CrudRepository<Employee, Long> {
 	List<Employee> findByFirstNameEndingWith(String suffix);
 	Optional<Employee> findByEmailIdAndMobile(String email, String mobile);
 	List<Employee> findByEmailIdOrMobile(String email, String mobile);
+                   
 	
 	@Query("select e from Employee e where e.emailId=:x")
 	Optional<Employee> searchByEmail(@Param("x") String email);
@@ -1879,5 +1880,6 @@ Shared Caching Works Like This:
 -> First DB hit → stores in second-level cache.
 -> If User B logs in and loads user with ID 1:
 -> No DB hit — served from cache!
+
 
 
